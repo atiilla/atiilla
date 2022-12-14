@@ -1,4 +1,4 @@
-### Hello friend! 👋
+### Hello friend!
 <img align="right" alt="GIF" src="./binarytree.png" height="320" />
 - My name is Atilla. I'm a developer with background in front-end and backend who loves to learn new technologies and share his knowledge with others.
 <br/>
@@ -29,6 +29,12 @@ Languages and Tools:<br/>
 
 ![Atilla's GitHub stats](https://github-readme-stats.vercel.app/api?username=atiilla&show_icons=true&theme=dark)
 
+<div style="display:flex; align-items:end;">
+<img src="./freebsd-linux.png" width="150"/> 
+<p style="font-weight:bold; font-size:20pt; color:lime;font-family: 'terminal';">Happy coding!</p>
+</div>
+
+<!-- 
 <h3 style="color:lime">Graph: How much I (think I / actually) know</h3>
 
-![Graph](graph.jpeg)
+![Graph](graph.jpeg) -->
