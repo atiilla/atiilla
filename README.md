@@ -27,7 +27,8 @@ Languages and Tools:<br/>
 ![Insomnia](https://img.shields.io/badge/Insomnia-black?style=for-the-badge&logo=insomnia&logoColor=5849BE)
 ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
 
-![Atilla's GitHub stats](https://github-readme-stats.vercel.app/api?username=atiilla&show_icons=true&theme=radical)
+![Atilla's GitHub stats](https://github-readme-stats.vercel.app/api?username=atiilla&show_icons=true&theme=dark)
 
-<h3>Graph: How much I (think I / actually) know</h3>
-<img src="./graph.jpeg" alt="Atilla's streak stats" />
+<h3 style="color:lime">Graph: How much I (think I / actually) know</h3>
+
+![Graph](graph.jpeg)
