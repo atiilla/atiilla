@@ -4,7 +4,6 @@
 <br/>
 - My main focus is on javascript, but I also have experience with other languages and frameworks.
 <br/>
-- My goal of 2023 is learning more about c++ and upgrading my java skill.
 <br/>
 
 Languages and Tools:<br/>
