@@ -3,6 +3,7 @@
 - My name is Atilla. I'm a developer with background in front-end and backend who loves to learn new technologies and share his knowledge with others.
 <br/>
 - My main focus is on javascript, but I also have experience with other languages and frameworks.
+  
 <br/>
 <br/>
 
