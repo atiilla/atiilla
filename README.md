@@ -29,7 +29,7 @@ Languages and Tools: <br/>
 ![Atilla's GitHub stats](https://github-readme-stats.vercel.app/api?username=atiilla&show_icons=true&theme=dark)
 
 <div style="display:flex; align-items:end;">
-<img src="https://logger-service-qpqw.onrender.com/freebsd-linux.png" width="150"/> 
+<img src="./freebsd-linux.png" width="150"/> 
 <p style="font-weight:bold; font-size:20pt; color:lime;font-family: 'terminal';">Happy coding!</p>
 </div>
 
