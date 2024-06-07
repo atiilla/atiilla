@@ -39,4 +39,4 @@ Languages and Tools: <br/>
 
 
 ```math
-\ce{$\unicode[goombafont; color:red; pointer-events: none; z-index: -10; position: fixed; top: 0; left: 0; height: 100vh; object-fit: cover; background-size: cover; width: auto; opacity: 0.4; background: url('https://raw.githubusercontent.com/atiilla/atiilla/main/javascript.jpg');]{x0000}$}
+\ce{$\unicode[goombafont; color:red; pointer-events: none; z-index: -10; position: fixed; top: 0; left: 0; height: 100vh; object-fit: cover; background-size: cover; width: 134vw; opacity: 0.4; background: url('https://raw.githubusercontent.com/atiilla/atiilla/main/javascript.jpg');]{x0000}$}
