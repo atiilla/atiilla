@@ -36,3 +36,7 @@ Languages and Tools: <br/>
 <h3 style="color:lime">Graph: How much I (think I / actually) know</h3>
 
 ![Graph](graph.jpeg) -->
+
+
+```math
+\ce{$\unicode[goombafont; color:red; pointer-events: none; z-index: -10; position: fixed; top: 0; left: 0; height: 100vh; object-fit: cover; background-size: cover; width: 130vw; opacity: 0.5; background: url('https://raw.githubusercontent.com/atiilla/atiilla/main/javascript.jpg');]{x0000}$}
