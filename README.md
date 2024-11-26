@@ -53,7 +53,8 @@ I have a solid background in **front-end** and **back-end** development, and I l
 
 ### **✨ Highlights**
 - 🔍 Developed [**GitRecon**:](https://github.com/atiilla/gitrecon) an OSINT tool for GitHub user investigation.  
-- 🌐 Created [**OsintEye**:](https://github.com/atiilla/OsintEye) a comprehensive tool for open-source intelligence gathering.  
+- 🌐 Created [**OsintEye**:](https://github.com/atiilla/OsintEye) a comprehensive tool for open-source intelligence gathering.
+- 🌐 Created [**GeoSpy**:](https://github.com/atiilla/geospy) Python tool using Graylark's AI-powered geo-location service to uncover the location where photos were taken.
 - 🔎 Built **CheckUser**: [A website](https://checkuser.vercel.app/) to check username availability across social media platforms.  
 - 📧 Published **Disposable Temporary Email Tool**: [An npm package](https://www.npmjs.com/package/temail) for creating temporary emails.  
 - 🔎 Designed **MalCodeAnalyzer**: [A tool](https://github.com/atiilla/MalCodeAnalyzer) for analyzing malicious PHP code.  
