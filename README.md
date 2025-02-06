@@ -1,4 +1,4 @@
-# **Hello, Friend! 👋**
+# **Hello, Friend!** <img src="./linux.png" width="50"/>
 
 <img align="right" alt="GIF" src="./binarytree.png" height="320" />
 
