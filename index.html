@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <title>Atilla the hax0r</title>
+   <style>
+      body {
+         background-color: #000000;
+         margin: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         min-height: 100vh;
+         overflow: hidden;
+         font-family: monospace;
+      }
+
+      pre {
+         font-size: 8px;
+         background-color: #000000;
+         font-weight: bold;
+         padding: 4px 5px;
+         color: white;
+         font-family: monospace;
+         line-height: 1;
+      }
+
+      .char-at {
+         color: #00FF00;
+      }
+
+      /* @ */
+      .char-hash {
+         color: #FF00FF;
+      }
+
+      /* # */
+      .char-dot {
+         color: #AAAAAA;
+      }
+
+      /* . */
+      .char-colon {
+         color: #FFCC00;
+      }
+
+      /* : */
+      .char-digit {
+         color: #00CED1;
+      }
+
+      /* 0-9 */
+      .char-letter {
+         color: #FF4500;
+      }
+
+      /* letters */
+      .char-space {
+         color: #000000;
+      }
+
+      /* space */
+      .char-symbol {
+         color: #FFFFFF;
+      }
+
+      /* other symbols */
+
+      #flag-container {
+         position: relative;
+         overflow: hidden;
+         max-width: 100%;
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      #tiresult {
+         font-size: 11px;
+         background-color: #000000;
+         font-weight: bold;
+         padding: 3px 5px;
+         margin: 0;
+         display: inline-block;
+         white-space: pre;
+         width: auto;
+         overflow-x: auto;
+         position: relative;
+      }
+
+      /* Add scanline effect */
+      #tiresult::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: linear-gradient(to bottom,
+               transparent 0%,
+               rgba(32, 128, 32, 0.2) 50%,
+               transparent 100%);
+         background-size: 100% 4px;
+         pointer-events: none;
+         animation: scanlines 2s linear infinite;
+      }
+
+      @keyframes scanlines {
+         0% {
+            background-position: 0 0;
+         }
+
+         100% {
+            background-position: 0 100%;
+         }
+      }
+
+      #mcphydra {
+         background-color: #000000;
+         font-weight: bold;
+         padding: 3px 5px;
+         margin: 0;
+         display: inline-block;
+         font-size: 18px;
+         white-space: pre;
+         width: 100%;
+         overflow-x: auto;
+         color: #07df07;
+      }
+
+      /* Responsive font sizes */
+      @media screen and (max-width: 1024px) {
+
+         #tiresult,
+         #mcphydra {
+            font-size: 16px;
+         }
+
+         #mcphydra {
+            font-size: 10px;
+         }
+      }
+
+      @media screen and (max-width: 768px) {
+
+         #tiresult,
+         #mcphydra {
+            font-size: 14px;
+         }
+
+         #mcphydra {
+            font-size: 9px;
+         }
+      }
+
+      @media screen and (max-width: 480px) {
+
+         #tiresult,
+         #mcphydra {
+            font-size: 12px;
+         }
+
+         #mcphydra {
+            font-size: 8px;
+         }
+      }
+
+      /* Animation for each character */
+      .char-at, .char-hash, .char-dot, .char-colon, 
+      .char-digit, .char-letter, .char-symbol {
+         display: inline-block;
+         transform-origin: center center;
+         position: relative;
+         transition: color 0.1s ease;
+         will-change: transform, color, opacity;
+      }
+
+      /* Glitch effect for binary characters */
+      @keyframes glitch {
+         0% {
+            transform: translateX(0);
+            opacity: 1;
+         }
+
+         2% {
+            transform: translateX(2px) skewX(2deg);
+            opacity: 0.8;
+         }
+
+         4% {
+            transform: translateX(-2px) skewX(-2deg);
+            opacity: 0.9;
+         }
+
+         5% {
+            transform: translateX(0);
+            opacity: 1;
+         }
+
+         80% {
+            transform: translateX(0);
+         }
+
+         82% {
+            transform: translateY(1px);
+         }
+
+         84% {
+            transform: translateY(-1px);
+         }
+
+         86% {
+            transform: translateX(0);
+         }
+
+         100% {
+            transform: translateX(0);
+         }
+      }
+
+      /* Flicker effect */
+      @keyframes flicker {
+
+         0%,
+         100% {
+            opacity: 1;
+         }
+
+         8%,
+         10% {
+            opacity: 0.8;
+         }
+
+         12% {
+            opacity: 0.7;
+         }
+
+         38%,
+         40% {
+            opacity: 0.9;
+         }
+
+         42% {
+            opacity: 0.8;
+         }
+
+         78% {
+            opacity: 1;
+         }
+
+         80% {
+            opacity: 0.6;
+         }
+
+         82% {
+            opacity: 0.9;
+         }
+      }
+
+      .binary-digit {
+         animation: glitch 3s infinite steps(1);
+      }
+
+      /* Digital static background effect */
+      .digital-static {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         pointer-events: none;
+         opacity: 0.03;
+         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUsSURBVGhD1ZpZqFVVGMd/dxRDU+lqZmZSNJA2aGVUQpOQEQTRA0UDBVE9RARA1ENBRPU0E0VBL0VBkZEEFRWUNNA8NJBl2mhRWZaN/n/7rHXW3Wfvs/c+1734hz/3nL2+9a21vrXWt751uhoaRmK9JngTvo2/4t/FR/gwnpyDnXgOK+Oq2Bt3xFm4BP/Cf4fe+Cy+gJdinzRtDtS+EE/ERzDlvfFj/Kw4jkXKnoJH4hh8C1O2D5/E8/BYPC7nWDwGZ6Nt2/YVnIzD0jQxQrYYbjQJnWsuxh1wenw3nI5X4LfYlOl/h3y2GVHb7x6B9vHHMLLb8FVsBZ/FU/ABdLXpb38dzsJ2mEHHbYXs6I3x1Jj4utiB1LFZOOf1E2t2D8QfYz1ZYfzOuaMDYtUXRjzc+jN4V7yeG3NHO5gYl/i1F2NuGI9NMjM3m5qdjg02yXDfj7mhB5tsKmbIUDfijdiJZsV3vXgULsYRmAk2HWtSBgfj+vheJfJd3CVec9wP42d4M26P+6KLi2ufK9B3qK9S5fZwDF4bHU25MhP2+3gPPocO9iHcMF532XHOfoyFc8hS9yxejLvhvTEv5RPx2QF5N+ZuZYDFJThwgKDYSz5QrN/eKl2FcyQTZnPvxdJxL9YxEddjnWxnIrwX3+8RB6EO5a1HvHFZrNpH4qH2U9yYxmHjsU1T7MeTYr0ZcfN6WaznPKuq12LVdOCtwJnYZKnuuA+i3+/q2G77UrPr0bjQO84a4b5ZTTx0Wc8VDr3QEHCeOZ/Oifd7cD7H75SbcWRM3ISfx3rGf8fGKseNSMuN/+kXRe/C/eN1X7w6Xn+EHvbuwPV4RHzW8e4er0+N9ZrxMf6CzcxE+QROB8ej/V2t1cQCN1wXofSm2ZjCxVW4uyHpg+7xfXrYXz8xlj9wPzKh5m26rHcSZdyLb8Z6Oc6NddciJw0H4xfYlDE5DTUdXBQ2KY6HxmvnYPqbfsffVfI7fq+MxzLl9+0z2ywTz0rl3OPXJn0H3R9cnVzGFQdYQ+tUyZqoE2zqQOzV+HCsTMVH8fKYWXdTFZwTZv5eRZv9zhhfxBXoz+yUG6wDfzNe23+X933wRFwt+7Ea5eC+gpfGjznvivXOo+KzNXktOueKdffwT2Ldfccl21Wl2Hk9H1cPLbJcHBO/X8YVMFMmkCZOLs7j+vFBzPwxsQ1Tlsq5/yqmHbeSrdyFnDNT8fV43Sq+a0LMZOvxz4wujvFdmVBHJu9zc9hn+EKCk9k5UMZEVDeordjX1+XFhZr4L5swQ8j5YJ/V38zzOvN96+iKxwP0KWgGqmTN+B2/Wy+cL6ac85lwQ+bfOBfPwpNxWvzdmXgGumeyDTNVHp3pKh/b9CftRKTKRNiGgaSGtxOxPJZXxSbb8TvWEAfgQHK5bcKE+55RwU7kwHsfMyfMkjtk0BzP8mC/6fbcx3UWQnVlZuTKOBfPLK5mHOPL0b2Zc8jfuxvvFBoGuQIa5m39TLdj+n0m1Aj62ljPhKvRCbgWh2DmWZa7jPYrQ8M5Ujqk9cxNZSbQR8E0NPzdLlcyLZJh39dYsxDhUOxjrKFG24bJVYbbZQ9YPSRejV5rHyM2B4/q2i9LlKuN+w2Xe+dcK9s9j92vLq4YHtkMAz3VcC/iW5t2Hm73K9xruJp4pDPzvuGhUSZ2ww7+L6aJ0Fq46GnoZsJHwWbcc00PdT1dfCfafwDbPDRXCJMzJgAAAABJRU5ErkJggg==');
+         animation: static 0.5s steps(4) infinite;
+      }
+
+      @keyframes static {
+
+         0%,
+         100% {
+            background-position: 0 0;
+         }
+
+         25% {
+            background-position: -2px -2px;
+         }
+
+         50% {
+            background-position: 2px 2px;
+         }
+
+         75% {
+            background-position: -1px 1px;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div class="digital-static"></div>
+   <div id="flag-container">
+      <pre id="tiresult">
+         
+      </pre>
+   </div>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         const tiresult = document.getElementById('tiresult');
+         
+         // ASCII art content
+         const ascii = `
+Software Engineer | Open Source Contributor
+
+ █████╗ ████████╗██╗██╗     ██╗      █████╗ 
+██╔══██╗╚══██╔══╝██║██║     ██║     ██╔══██╗
+███████║   ██║   ██║██║     ██║     ███████║
+██╔══██║   ██║   ██║██║     ██║     ██╔══██║
+██║  ██║   ██║   ██║███████╗███████╗██║  ██║
+╚═╝  ╚═╝   ╚═╝   ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝
+github.com/atiilla`;
+
+         // Function to wrap individual characters with styled spans
+         const wrapChar = (ch) => {
+            if (ch === '@') return `<span class="char-at">@</span>`;
+            if (ch === '#') return `<span class="char-hash">#</span>`;
+            if (ch === '.') return `<span class="char-dot">.</span>`;
+            if (ch === ':') return `<span class="char-colon">:</span>`;
+            if (ch >= '0' && ch <= '9') return `<span class="char-digit">${ch}</span>`;
+            if (ch.match(/[a-zA-Z]/)) return `<span class="char-letter">${ch}</span>`;
+            if (ch === ' ') return `<span class="char-space">&nbsp;</span>`;
+            return `<span class="char-symbol">${ch}</span>`;
+         };
+
+         // Process the ASCII art and insert into the DOM
+         const lines = ascii.trim().split('\n');
+         tiresult.innerHTML = lines.map(line => 
+            line.split('').map(wrapChar).join('')
+         ).join('<br>');
+
+         // Animation functions
+         const chars = document.querySelectorAll('#tiresult span');
+         const originalChars = [];
+
+         // Binary-themed colors - matrix-like greens and cyber colors
+         const binaryColors = [
+            '#07df07', // Matrix green
+            '#00ff00', // Bright green
+            '#39ff14', // Neon green
+            '#73ff00', // Lime green
+            '#00ffff', // Cyan
+            '#18f2b2', // Light teal
+            '#7fff00', // Chartreuse
+            '#00ff7f', // Spring green
+            '#ccff00', // Electric lime
+            '#19e67c'  // Mint
+         ];
+
+         // Possible characters for the glitch effect
+         const glitchChars = '01010101010101010101';
+         const hackerChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%^&*()_-+=<>?/[]{}|~';
+
+         function getRandomColor() {
+            return binaryColors[Math.floor(Math.random() * binaryColors.length)];
+         }
+
+         // Store original characters
+         function storeOriginalChars() {
+            chars.forEach(char => {
+               originalChars.push(char.textContent);
+            });
+         }
+
+         // Handle responsive animation scaling
+         function adjustAnimation() {
+            const viewportWidth = window.innerWidth;
+            let scaleFactor = 1;
+
+            if (viewportWidth <= 480) {
+               scaleFactor = 0.5;
+            } else if (viewportWidth <= 768) {
+               scaleFactor = 0.7;
+            } else if (viewportWidth <= 1024) {
+               scaleFactor = 0.85;
+            }
+
+            // Apply colors to each character
+            chars.forEach((char, index) => {
+               const text = char.textContent;
+
+               // Apply binary-themed colors to different character types
+               if (text === '0' || text === '1') {
+                  char.style.color = binaryColors[index % binaryColors.length];
+                  char.classList.add('binary-digit');
+               } else if (text === '@') {
+                  // Keep original color from CSS classes
+               } else if (text === ' ') {
+                  char.style.color = '#000000'; // Black for spaces
+               } else {
+                  char.style.color = binaryColors[Math.floor(Math.random() * binaryColors.length)];
+               }
+            });
+         }
+
+         // Glitch effect - randomly scramble certain characters
+         function applyGlitchEffect() {
+            const glitchIntervals = [];
+
+            // Major glitch effect every 3-8 seconds
+            setInterval(() => {
+               // Clear any active glitch effects
+               glitchIntervals.forEach(interval => clearInterval(interval));
+               glitchIntervals.length = 0;
+
+               // Apply major glitch with multiple character changes
+               const glitchInterval = setInterval(() => {
+                  // Only apply glitch to ~3% of characters at a time
+                  const glitchCount = Math.max(1, Math.floor(chars.length * 0.03));
+
+                  for (let i = 0; i < glitchCount; i++) {
+                     const randomIndex = Math.floor(Math.random() * chars.length);
+                     const char = chars[randomIndex];
+
+                     // Don't glitch spaces and prioritize binary digits
+                     if (char.textContent !== ' ' && char.textContent !== '&nbsp;') {
+                        // Save original character
+                        const originalChar = originalChars[randomIndex];
+
+                        // Give preference to changing binary-like characters
+                        if (Math.random() > 0.5) {
+                           char.textContent = glitchChars.charAt(Math.floor(Math.random() * glitchChars.length));
+                        } else {
+                           char.textContent = hackerChars.charAt(Math.floor(Math.random() * hackerChars.length));
+                        }
+
+                        char.style.color = getRandomColor();
+
+                        // Reset after a short time
+                        setTimeout(() => {
+                           char.textContent = originalChar;
+                        }, 50 + Math.random() * 100);
+                     }
+                  }
+               }, 50);
+
+               glitchIntervals.push(glitchInterval);
+
+               // Stop the major glitch effect after a short time
+               setTimeout(() => {
+                  glitchIntervals.forEach(interval => clearInterval(interval));
+                  glitchIntervals.length = 0;
+               }, 300 + Math.random() * 500);
+            }, 500 + Math.random() * 5000);
+
+            // Minor glitches more frequently
+            setInterval(() => {
+               // Only glitch a few characters
+               const glitchCount = Math.max(1, Math.floor(chars.length * 0.01));
+
+               for (let i = 0; i < glitchCount; i++) {
+                  const randomIndex = Math.floor(Math.random() * chars.length);
+                  const char = chars[randomIndex];
+
+                  // Don't glitch spaces and focus on symbol characters
+                  if (char.textContent !== ' ' && char.textContent !== '&nbsp;') {
+                     // Save original character
+                     const originalChar = originalChars[randomIndex];
+
+                     // Apply random character
+                     char.textContent = glitchChars.charAt(Math.floor(Math.random() * glitchChars.length));
+
+                     // Reset after a very short time
+                     setTimeout(() => {
+                        char.textContent = originalChar;
+                     }, 20 + Math.random() * 50);
+                  }
+               }
+            }, 500 + Math.random() * 1000);
+         }
+
+         // Add color animation for visual interest
+         function animateColors() {
+            // Animate special characters with color changes
+            setInterval(() => {
+               chars.forEach((char, index) => {
+                  // Only change some of the characters each cycle for better effect
+                  if (Math.random() > 0.7) {
+                     const color = getRandomColor();
+
+                     // Create staggered animation effect
+                     setTimeout(() => {
+                        char.style.color = color;
+                     }, index % 10 * 20); // Small staggered delay
+                  }
+               });
+            }, 500);
+         }
+
+         // Initial setup
+         storeOriginalChars();
+         adjustAnimation();
+         
+         // Start animation with a slight delay
+         setTimeout(() => {
+            animateColors();
+            applyGlitchEffect();
+         }, 1000);
+
+         // Adjust animation on window resize
+         window.addEventListener('resize', adjustAnimation);
+      });
+   </script>
+</body>
+
+</html>
