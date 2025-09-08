@@ -58,8 +58,11 @@ I specialize in both **front-end** and **back-end** development and enjoy explor
 
 ---
 
-
 <div align="left">
   <img src="./freebsd-linux.png" width="120"/>
   <p><strong style="font-size: 1.5rem; color: lime;">Happy coding!</strong></p>
 </div>
+
+<a href="https://www.buymeacoffee.com/attilla" target="_blank" rel="noopener">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200" />
+</a>
