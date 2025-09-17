@@ -53,9 +53,6 @@ I specialize in both **front-end** and **back-end** development and enjoy explor
 
 </details>
 
-
-![Atilla's GitHub Stats](https://github-readme-stats.vercel.app/api?username=atiilla&show_icons=true&theme=dark)
-
 ---
 
 <div align="left">
